@@ -1,0 +1,35 @@
+@import "../../variables";
+
+.bar-chart {
+    background-color: $secondary-color;
+    
+    
+  }
+  
+  .bar-chart rect {
+    fill: lighten($secondary-color, 20%);
+    }
+  
+  .bar-chart text {
+    fill: $text-color;
+    font-size: 14px;
+  }
+  
+  .bar-chart .axis line,
+  .bar-chart .axis path {
+    stroke: $complementary-color;
+  }
+  
+  .bar-chart .axis text {
+    fill: $text-color;
+  }
+  
+  .bar-chart .axis.x .tick line {
+    stroke: $complementary-color;
+    opacity: 0.5;
+  }
+  
+  .bar-chart .axis.y .tick line {
+    stroke: $complementary-color;
+    opacity: 0.5;
+  }

@@ -1,0 +1,23 @@
+{
+  "canisters": {
+    "Verifier": {
+      "main": "canisters/Verifier/main.mo",
+      "type": "motoko"
+    },
+
+    "assets": {
+      "dependencies": ["Verifier"],
+      "frontend": {
+        "entrypoint": "dist/index.html"
+      },
+      "source": ["dist/", "well-known/"],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "mops sources"
+    }
+  },
+  "version": 1
+}

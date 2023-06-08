@@ -1,0 +1,145 @@
+@import './components/Activity/activity';
+@import './components/Footer/footer';
+@import './components/Header/header';
+@import './components/Loading/loading';
+@import './components/Nav/nav';
+@import './components/Student/student';
+@import './components/Team/team';
+@import './components/Submit/submit';
+@import './constants/colors';
+@import './components/Registration/registration';
+@import './components/Schedule/schedule';
+@import './components/Resources/resources';
+@import './components/Profile/profile';
+@import './variables';
+@import './components/Charts/_heatmap';
+@import "./components/Admin/admin";
+@import "./components/Charts/barchart";
+
+
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $secondary-color;
+  color: $text-color;
+}
+
+h1,
+h4 {
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  color: $highlight-color;
+}
+
+h2 {
+  font-family: 'Orbitron', sans-serif;
+  border-bottom: 2px solid gray;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 1px $highlight-color, 0 0 20px $highlight-color;
+}
+
+h3 {
+  color: $text-color;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: $highlight-color;
+  color: $text-color;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px $shadow-color;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: darken($highlight-color, 10%);
+  box-shadow: 0 4px 8px $shadow-color;
+}
+
+.btn:active {
+  background-color: darken($highlight-color, 20%);
+  box-shadow: 0 1px 2px $shadow-color;
+}
+
+main {
+  margin-left: 200px;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+section {
+  margin-bottom: 20px;
+  background-color: $secondary-color;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px $shadow-color;
+  //max-height: 500px; 
+  overflow: scroll;
+}
+
+.team-item,
+.individual-item,
+.activity-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color:  lighten($secondary-color, 10%);;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px $shadow-color;
+}
+
+.team-item:last-child,
+.individual-item:last-child,
+.activity-item:last-child {
+  margin-bottom: 0;
+}
+
+.team-item.active .individual-list {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+span {
+ 
+  font-size: 1.2em;
+  margin-left: 0.5em;
+  }
+  
+  .hidden {
+  display: none;
+  max-height: 0;
+  }
+  
+  @media screen and (max-width: 768px) {
+  nav {
+  position: static;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 2px 4px $shadow-color;
+  }
+  
+  main {
+  margin-left: 0;
+  padding: 20px;
+  }
+  
+  footer {
+  position: static;
+  box-shadow: none;
+  }
+  }

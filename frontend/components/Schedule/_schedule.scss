@@ -1,0 +1,12 @@
+@import "../../_variables";
+.schedule {
+  .calendar-iframe {
+    border: 0;
+    //border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 800px;
+    max-height: 600px;
+    background-color: $secondary-color;
+  }
+}

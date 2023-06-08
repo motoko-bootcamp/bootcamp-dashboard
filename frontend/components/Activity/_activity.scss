@@ -1,0 +1,124 @@
+@import "../../_variables.scss";
+
+.activities {
+margin-bottom: 20px;
+background-color: $secondary-color;
+border-radius: 10px;
+padding: 20px;
+box-shadow: 0 2px 4px $shadow-color;
+//max-height: 500px;
+overflow: scroll;
+}
+
+
+
+.special-announcement-newStudent {
+  background: linear-gradient(45deg, $new-color 25%, $secondary-color 25%, $secondary-color 50%, $new-color 50%, $new-color 75%, $secondary-color 75%);
+  background-size: 300% 300%;
+  animation: metallic 300s linear infinite;
+  border: 2px solid $new-color;
+  border-radius: 5px;
+  box-shadow: 0 0 10px $new-color;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.emoji {
+  display: inline-block;
+}
+
+.bonus {
+  animation: glow 10s linear infinite alternate;
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px $bonus-color, 0 0 20px $bonus-color, 0 0 25px $bonus-color;
+  }
+  50% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px $bonus-color, 0 0 40px $bonus-color, 0 0 50px $bonus-color;
+  }
+}
+
+
+.special-announcement-newStudent::before {
+content: "";
+position: absolute;
+left: -50%;
+width: 100%;
+height: 100%;
+background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%);
+background-size: 100px 100px;
+animation: reflection 300s linear infinite;
+}
+
+.special-announcement-newTeam {
+background: linear-gradient(45deg, darken($complementary-color, 20%) 25%, darken($secondary-color, 20%) 25%, darken($secondary-color, 20%) 50%, darken($complementary-color, 20%) 50%, darken($complementary-color, 20%) 75%, darken($secondary-color, 20%) 75%);
+background-size: 100px 100px;
+animation: slide 10s linear infinite;
+border: 2px solid $complementary-color;
+border-radius: 5px;
+box-shadow: 0 0 10px $complementary-color;
+position: relative;
+overflow: hidden;
+}
+
+.special-announcement-newTeam::before {
+content: "";
+position: absolute;
+left: -50%;
+width: 100%;
+height: 100%;
+background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%);
+background-size: 100px 100px;
+animation: reflection 300s linear infinite;
+}
+
+@keyframes slide {
+0% {
+background-position: 0 0;
+}
+100% {
+background-position: 100px 100px;
+}
+}
+
+@keyframes metallic {
+0% {
+background-position: 0% 50%;
+}
+50% {
+background-position: 100% 50%;
+}
+100% {
+background-position: 0% 50%;
+}
+}
+
+@keyframes reflection {
+0% {
+left: -50%;
+}
+100% {
+left: 150%;
+}
+}
+
+@keyframes colorShift {
+0% {
+filter: hue-rotate(0deg);
+}
+100% {
+filter: hue-rotate(360deg);
+}
+}
+
+@keyframes pulse {
+0%, 100% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+}
+}

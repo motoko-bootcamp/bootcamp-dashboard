@@ -1,0 +1,22 @@
+@import "../../_variables";
+
+header {
+  background-color: $secondary-color;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px $shadow-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+  margin-right: 15px;
+}

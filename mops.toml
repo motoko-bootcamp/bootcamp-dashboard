@@ -1,0 +1,3 @@
+[dependencies]
+base = "0.8.7"
+canistergeek = "0.0.4"

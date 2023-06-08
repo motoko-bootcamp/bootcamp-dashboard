@@ -1,0 +1,97 @@
+@import "../../_variables";
+
+.admin-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: $secondary-color;
+  gap: 20px;
+}
+
+.card {
+  padding: 30px;
+  background-color: $secondary-color;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px $shadow-color;
+  min-height: 410px;
+  flex: 1;
+  margin: 10px;
+  min-width: 500px;
+}
+
+.card.double-width {
+  flex: 2;
+}
+
+.stats,
+.team-creation,
+.project-verification {
+  width: 100%;
+}
+
+.admin-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  background-color: lighten($secondary-color, 15%);
+  border: 1px solid $highlight-color;
+  border-radius: 8px;
+  color: $primary-color;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+.admin-submit {
+  align-self: flex-end;
+  padding: 12px 20px;
+  background-color: $primary-color;
+  color: $text-color;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px $shadow-color;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.admin-submit:hover {
+  background-color: darken($primary-color, 10%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.admin-submit:active {
+  background-color: darken($primary-color, 20%);
+  box-shadow: 0 1px 2px $shadow-color;
+}
+
+.grant-bonus-points {
+  width: 100%;
+  p{
+    padding: 20px;
+  }
+}
+
+.card.canister-info {
+  .canister-data {
+    display: grid;
+    gap: 10px;
+    padding: 10px 0;
+    background-color: lighten($secondary-color, 15%);
+    border-radius: 8px;
+  }
+
+  .canister-data-title {
+    font-weight: bold;
+    color: $primary-color;
+  }
+
+}
+.spanish-checkbox-container{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+

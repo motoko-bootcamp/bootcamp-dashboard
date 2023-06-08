@@ -1,0 +1,16 @@
+{
+  "Verifier": {
+    "ic": "rww3b-zqaaa-aaaam-abioa-cai",
+    "local": "qvhpv-4qaaa-aaaaa-aaagq-cai"
+  },
+  "assets": {
+    "ic": "24ytc-bqaaa-aaaan-qdl7q-cai",
+    "local": "qjdve-lqaaa-aaaaa-aaaeq-cai"
+  },
+  "day_1": {
+    "ic": "2ekwf-dqaaa-aaaan-qdmaa-cai"
+  },
+  "day_2": {
+    "ic": "dnwrj-3aaaa-aaaam-qbbqq-cai"
+  }
+}

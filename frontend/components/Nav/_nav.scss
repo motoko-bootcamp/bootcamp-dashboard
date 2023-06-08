@@ -1,0 +1,57 @@
+@import "../../_variables";
+
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    text-shadow: 0 0 1px $highlight-color, 0 0 20px $highlight-color;
+    color: $text-color;
+  }
+}
+
+nav {
+  background-color: $secondary-color;
+  padding: 20px;
+  width: 200px;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  box-shadow: 2px 0 4px $shadow-color;
+  font-family: 'Orbitron', sans-serif;
+  z-index: 100;
+  
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav li {
+  padding: 10px 0;
+  border-bottom: 1px solid gray;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+nav li:last-child {
+  border-bottom: none;
+}
+
+nav li:hover {
+  text-shadow: 0 0 1px $highlight-color, 0 0 20px $highlight-color;
+  color: $text-color;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    position: static;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 2px 4px $shadow-color;
+  }
+}

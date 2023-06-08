@@ -1,0 +1,244 @@
+type VerifyProject = 
+ variant {
+   err:
+    variant {
+      AlreadyCompleted: text;
+      InvalidDay: text;
+      NotAController: text;
+      NotAStudent: text;
+      NotImplemented: text;
+      UnexpectedError: text;
+      UnexpectedValue: text;
+    };
+   ok;
+ };
+type UpdateCallsAggregatedData = vec nat64;
+type TeamString = 
+ record {
+   name: text;
+   score: text;
+   teamMembers: vec text;
+ };
+type Team = 
+ record {
+   name: text;
+   score: nat;
+   spanish: bool;
+   teamMembers: vec text;
+ };
+type StudentList = 
+ record {
+   bonusPoints: text;
+   name: text;
+   score: text;
+ };
+type Student = 
+ record {
+   bonusPoints: nat;
+   cliPrincipalId: text;
+   completedDays: vec DailyProject;
+   name: text;
+   principalId: text;
+   score: nat;
+   teamName: text;
+ };
+type Result_7 = 
+ variant {
+   err: text;
+   ok: Team;
+ };
+type Result_6 = 
+ variant {
+   err: text;
+   ok: vec text;
+ };
+type Result_5 = 
+ variant {
+   err: text;
+   ok: vec DailyProjectText;
+ };
+type Result_4 = 
+ variant {
+   err: text;
+   ok: text;
+ };
+type Result_3 = 
+ variant {
+   err: text;
+   ok: vec StudentList;
+ };
+type Result_2 = 
+ variant {
+   err: text;
+   ok: vec Student;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: Student;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok;
+ };
+type NumericEntity = 
+ record {
+   avg: nat64;
+   first: nat64;
+   last: nat64;
+   max: nat64;
+   min: nat64;
+ };
+type Nanos = nat64;
+type MetricsGranularity = 
+ variant {
+   daily;
+   hourly;
+ };
+type LogMessagesData = 
+ record {
+   message: text;
+   timeNanos: Nanos;
+ };
+type HourlyMetricsData = 
+ record {
+   canisterCycles: CanisterCyclesAggregatedData;
+   canisterHeapMemorySize: CanisterHeapMemoryAggregatedData;
+   canisterMemorySize: CanisterMemoryAggregatedData;
+   timeMillis: int;
+   updateCalls: UpdateCallsAggregatedData;
+ };
+type GetMetricsParameters = 
+ record {
+   dateFromMillis: nat;
+   dateToMillis: nat;
+   granularity: MetricsGranularity;
+ };
+type GetLogMessagesParameters = 
+ record {
+   count: nat32;
+   filter: opt GetLogMessagesFilter;
+   fromTimeNanos: opt Nanos;
+ };
+type GetLogMessagesFilter = 
+ record {
+   analyzeCount: nat32;
+   messageContains: opt text;
+   messageRegex: opt text;
+ };
+type GetLatestLogMessagesParameters = 
+ record {
+   count: nat32;
+   filter: opt GetLogMessagesFilter;
+   upToTimeNanos: opt Nanos;
+ };
+type Dashboard = 
+ service {
+   acceptCycles: () -> ();
+   adminAnnounceTimedEvent: (text) -> ();
+   adminCreateTeam: (text, bool) -> (Result_7);
+   adminGrantBonusPoints: (text, text) -> (Result);
+   adminManuallyVerifyStudentDay: (nat, text) -> (Result);
+   adminSpecialAnnouncement: (text) -> ();
+   availableCycles: () -> (nat) query;
+   collectCanisterMetrics: () -> ();
+   getActivity: (nat, nat) -> (vec Activity) query;
+   getActivityFeed: () -> (vec Activity) query;
+   getAdmins: () -> (Result_6) query;
+   getAllStudents: () -> (Result_6);
+   getAllStudentsPrincipal: () -> (vec principal);
+   getAllTeams: () -> (vec TeamString) query;
+   getCanisterLog: (opt CanisterLogRequest) ->
+    (opt CanisterLogResponse) query;
+   getCanisterMetrics: (GetMetricsParameters) -> (opt CanisterMetrics) query;
+   getStudent: (text) -> (Result_1);
+   getStudentCompletedDays: () -> (Result_5);
+   getStudentPrincipalByName: (text) -> (Result_4);
+   getStudentsForTeamDashboard: (text) -> (Result_3) query;
+   getStudentsFromTeam: (text) -> (Result_2);
+   getTeam: (text) -> (Team);
+   getTotalCompletedPerDay: () -> (DailyTotalMetrics) query;
+   getTotalProjectsCompleted: () -> (text) query;
+   getTotalStudents: () -> (text) query;
+   getTotalTeams: () -> (text) query;
+   getUser: () -> (Result_1);
+   isStudent: (text) -> (bool) query;
+   registerAdmin: (text) -> (Result);
+   registerStudent: (text, text, bool) -> (Result_1);
+   setMaxMessagesCount: (nat) -> ();
+   unregisterAdmin: (text) -> (Result);
+   verifyProject: (text, nat) -> (VerifyProject);
+ };
+type DailyTotalMetrics = 
+ record {
+   day1: text;
+   day2: text;
+   day3: text;
+   day4: text;
+   day5: text;
+ };
+type DailyProjectText = 
+ record {
+   canisterId: text;
+   day: text;
+   timeStamp: text;
+ };
+type DailyProject = 
+ record {
+   canisterId: principal;
+   day: nat;
+   timeStamp: nat64;
+ };
+type DailyMetricsData = 
+ record {
+   canisterCycles: NumericEntity;
+   canisterHeapMemorySize: NumericEntity;
+   canisterMemorySize: NumericEntity;
+   timeMillis: int;
+   updateCalls: nat64;
+ };
+type CanisterMetricsData = 
+ variant {
+   daily: vec DailyMetricsData;
+   hourly: vec HourlyMetricsData;
+ };
+type CanisterMetrics = record {data: CanisterMetricsData;};
+type CanisterMemoryAggregatedData = vec nat64;
+type CanisterLogResponse = 
+ variant {
+   messages: CanisterLogMessages;
+   messagesInfo: CanisterLogMessagesInfo;
+ };
+type CanisterLogRequest = 
+ variant {
+   getLatestMessages: GetLatestLogMessagesParameters;
+   getMessages: GetLogMessagesParameters;
+   getMessagesInfo;
+ };
+type CanisterLogMessagesInfo = 
+ record {
+   count: nat32;
+   features: vec opt CanisterLogFeature;
+   firstTimeNanos: opt Nanos;
+   lastTimeNanos: opt Nanos;
+ };
+type CanisterLogMessages = 
+ record {
+   data: vec LogMessagesData;
+   lastAnalyzedMessageTimeNanos: opt Nanos;
+ };
+type CanisterLogFeature = 
+ variant {
+   filterMessageByContains;
+   filterMessageByRegex;
+ };
+type CanisterHeapMemoryAggregatedData = vec nat64;
+type CanisterCyclesAggregatedData = vec nat64;
+type Activity = 
+ record {
+   activity: text;
+   activityId: text;
+   specialAnnouncement: text;
+ };
+service : () -> Dashboard

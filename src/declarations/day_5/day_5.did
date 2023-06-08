@@ -1,0 +1,81 @@
+type TestResult = 
+ variant {
+   err: TestError;
+   ok;
+ };
+type TestError = 
+ variant {
+   UnexpectedError: text;
+   UnexpectedValue: text;
+ };
+type StudentProfile = 
+ record {
+   Team: text;
+   graduate: bool;
+   name: text;
+ };
+type StreamingStrategy = variant {
+                           Callback:
+                            record {
+                              callback: StreamingCallback;
+                              token: StreamingCallbackToken;
+                            };};
+type StreamingCallbackToken = 
+ record {
+   content_encoding: text;
+   index: nat;
+   key: text;
+ };
+type StreamingCallbackResponse = 
+ record {
+   body: blob;
+   token: opt StreamingCallbackToken;
+ };
+type StreamingCallback = func (StreamingCallbackToken) ->
+                          (StreamingCallbackResponse) query;
+type Result_2 = 
+ variant {
+   err: text;
+   ok: StudentProfile;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok: bool;
+ };
+type HttpResponse = 
+ record {
+   body: blob;
+   headers: vec HeaderField;
+   status_code: nat16;
+   streaming_strategy: opt StreamingStrategy;
+ };
+type HttpRequest = 
+ record {
+   body: blob;
+   headers: vec HeaderField;
+   method: text;
+   url: text;
+ };
+type HeaderField = 
+ record {
+   text;
+   text;
+ };
+service : {
+  activateGraduation: () -> ();
+  addMyProfile: (StudentProfile) -> (Result_1);
+  deactivateGraduation: () -> ();
+  deleteMyProfile: () -> (Result_1);
+  http_request: (HttpRequest) -> (HttpResponse) query;
+  seeAProfile: (principal) -> (Result_2);
+  test: (principal) -> (TestResult);
+  updateMyProfile: (StudentProfile) -> (Result_1);
+  verifyOwnership: (principal, principal) -> (Result);
+  verifyWork: (principal, principal) -> (Result);
+}

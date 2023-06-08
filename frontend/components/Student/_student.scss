@@ -1,0 +1,116 @@
+@import "../../_variables";
+
+.Student-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border-bottom: 1px solid lighten($primary-color, 10%);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+}
+
+.BonusIcons{
+  margin-left: 0px;
+  span {
+    margin-left: 0px;
+  }
+}
+
+h4 {
+  margin-bottom: 4px;
+}
+
+p {
+  margin: 0;
+}
+
+.progress-bar {
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.progress {
+  height: 100%;
+  background-color: $primary-color;
+  border-radius: 4px;
+}
+
+.visible {
+  max-height: 1000px; // Adjust this value based on the maximum height you expect the list to have
+}
+
+.skeleton {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+.skeleton-name {
+  height: 24px;
+  width: 150px;
+  margin-bottom: 12px;
+}
+
+.skeleton-rank {
+  height: 16px;
+  width: 80px;
+  margin-bottom: 12px;
+}
+
+.skeleton-progress {
+  height: 16px;
+  width: 100px;
+  margin-bottom: 12px;
+}
+
+.skeleton-progress-bar {
+  height: 12px;
+  width: 100%;
+}
+
+.BonusIconsContainer {
+  display: flex;
+  gap: 4px;
+}
+
+.BonusIcons {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+}
+
+.Emoji {
+  font-size: 1.5em;
+}
+
+.Multiplier {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 0.6em;
+}
+
+.StarWithMultiplier {
+  .Emoji {
+    z-index: 1;
+  }
+  .Multiplier {
+    z-index: 2;
+  }
+}

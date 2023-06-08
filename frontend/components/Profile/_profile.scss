@@ -1,0 +1,65 @@
+@import "../../_variables";
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  background-color: $secondary-color;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px $shadow-color;
+  max-width: 400px;
+  margin: auto;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 1px $highlight-color, 0 0 20px $highlight-color;
+  font-family: 'Orbitron', sans-serif;
+  color: $highlight-color;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: lighten($secondary-color, 2%);
+  border-radius: 5px;
+  box-shadow: 0 1px 2px $shadow-color;
+  word-break: break-all;
+}
+
+.label {
+  font-weight: bold;
+  color: $highlight-color;
+  text-transform: uppercase;
+  word-break: keep-all;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.value {
+  font-style: italic;
+  color: $text-color;
+}
+
+.view-button {
+  background-color: $new-color;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: darken($new-color, 10%);
+  }
+} 

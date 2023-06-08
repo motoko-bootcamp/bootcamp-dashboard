@@ -1,0 +1,3 @@
+service : {
+  isEven: (int) -> (bool);
+}
